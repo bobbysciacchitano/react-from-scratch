@@ -16,15 +16,15 @@ That's fine, I'm not going to be showing this at conferences or anything. I'm ju
 
 ### But seriously. Why?
 
-I noticed that people tend to get bogged down in details like: _where is the view_ or _how does data get loaded_ or just _this is way too complex_. This intended to be a gentle introduction that I'll build up over time.
+I noticed that people tend to get bogged down in details like: _where is the view_ or _how does data get loaded_ or just _this is way too complex_ or _wtf is a JSX_. This intended to be a gentle introduction that I'll build up over time.
 
 ## 🎉 OK, Let's Get Started 
 
 ### Introduction, for real
 
-So React is this cool library developed by Facebook which is intended to basically provide you with a mechanism to create interactive user experiences. It's unopinionated about how to structure and architecture your project however many clues are given on how you could do it.
+So React is this cool Javascript library developed by Facebook which is intended to basically provide you with a mechanism to easily add interactivity to your browser UI. It's very unopinionated about how to structure and architecture your project which in some cases can be why it seems to be very difficult to get started.
 
-> This is not intdended to be some kind of bible on how to build the world's best application in React. It just surfaces some patterns and thinking that I found worked well in the past. At least when I was learning.
+> This is not intdended to be some kind of bible on how to build the world's best application in React. It just surfaces some patterns and thinking that I found worked well in the past (at least when I was learning).
 
 ### You will need
 
@@ -53,5 +53,7 @@ If everything has gone well, you should have a browser open automatically and na
 
 ## 🍼 My First Component
 
-### ...But first lets look at the project
+### ...But first lets look at the structure
+
+
 
