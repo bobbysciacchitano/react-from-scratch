@@ -189,7 +189,7 @@ Empty JSX is shorthand for `<React.Fragment>...</React.Fragment>` It's useful fo
 
 #### Back to our component
 
-Let's get back to working on our Name Displayer 9000 app. We're going to do another change to assign a single name to a value. To do this we're going to change things again a little:
+Let's get back to working on our Name Displayer 9000 app. We're going to do another change to assign our name to a value:
 
 `src/App.js`
 
