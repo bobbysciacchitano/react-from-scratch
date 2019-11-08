@@ -33,11 +33,11 @@ So React is this cool Javascript library developed by Facebook which is intended
 * NodeJS,
 * Yarn (optional).
 
-I'm not going to explain what this all is here. But given you're working with Javascript you'll need NodeJS.
+I'm not going to explain what this all is here. Do some reading in your own time if you're unsure.
 
 ### Create React App
 
-Create React App is a project developed by some really clever people at Facebook and the Open Source community to help bootstrap your project. Just like React itself it's fairly opinionated about how you should do things and abstracts away a lot of the config. It suits 90% of use cases so its _good enough_ for us.
+Create React App is a project developed by some really clever people at Facebook and the Open Source community to help bootstrap your project. Just like React itself it's fairly opinionated about how you should do things and abstracts away a lot of the config. It suits 90% of use cases so its totally fine for us.
 
 #### Install Create React App
 
@@ -55,5 +55,27 @@ If everything has gone well, you should have a browser open automatically and na
 
 ### ...But first lets look at the structure
 
+Open the project in your editor and let's look at a few files:
 
+`src/index.js`
+
+This is the main entry point for your application. Because we're starting from scratch, replace the module with the following:
+
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+
+#### I love deleting stuff without knowing what I'm doing...
+
+We removed some of the unnessary boilerplate so you can focus on the most important thing. ReactDOM is basically the bootstrapper for your project. It manages mounting your entry point (in this case `App`) into a specific DOM element (`root`).
+
+In later tutorials we'll learn about other assets like CSS and what's actually happening under the hood.
+
+#### Does the DOM element id have to be root?
+
+Nope, the DOM element can be whatever you want to call it. In this case, you can change it in the `index.html` file. Just make sure you update this file otherwise everything will blow up into 1,000 glittery pieces (ok not really but how cool would that be?).
 
