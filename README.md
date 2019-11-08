@@ -2,7 +2,7 @@
 
 Hello 👋,
 
-So you've decided to learn React and came across this. This project is just a quick intro to React I threw together to help explian some simple concepts on how to _think and design in React_.
+So you've decided to learn React and came across this. This project is just a quick intro to React I threw together to help explain some simple concepts on how to _think and design in React_.
 
 ## 🚦 Before We Begin
 
