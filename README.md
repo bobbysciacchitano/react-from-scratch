@@ -36,7 +36,7 @@ Caveat: I'm not going to explain ES5/ES6 modules, or _modern_ javascript develop
 
 ### Create React App
 
-Create React App is a project developed by some really clever people at Facebook and the Open Source community to help bootstrap your project. Just like React itself it's fairly opinionated about how you should do things and abstracts away a lot of the config. It suits 90% of use cases so its totally fine for us.
+Create React App is a project developed by some really clever people at Facebook and the Open Source community to help bootstrap your project. Just like React itself it's fairly unopinionated about how you should do things and abstracts away a lot of the config and complexity. It suits 90% of use cases so its totally fine for us.
 
 #### Install Create React App
 
