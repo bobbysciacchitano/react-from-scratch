@@ -1,4 +1,4 @@
-# react-from-scratch
+# React From Scratch
 
 Hello 👋,
 
@@ -8,7 +8,7 @@ So you've decided to learn React and came across this. This project is just a qu
 
 ### Who is this for?
 
-This assumes you have a vague idea about what exactly React is and you're intrerested in learning how to use the library without trying to find and gather resources or you want the quick version on how to get going.
+This assumes you have a vague idea about what React is and you're intrerested in learning how to use the library without trying to find and gather resources or you want the quick version on how to get going.
 
 ### It's kind of a rubbish intoduction to React
 
@@ -24,7 +24,7 @@ I noticed that people tend to get bogged down in details like: _where is the vie
 
 So React is this cool Javascript library developed by Facebook which is intended to provide you with a mechanism to easily add interactivity to your browser UI. It's very unopinionated about how to structure and architecture your project which in some cases can be why it seems to be very difficult to get started.
 
-> This is not intdended to be some kind of bible on how to build the world's best application in React. It just surfaces some patterns and thinking that I found worked well in the past (at least when I was learning).
+> This is not intended to be some kind of bible on how to build the world's best application in React. It just surfaces some patterns and thinking that I found worked well in the past (at least when I was learning).
 
 ### You will need
 
@@ -72,7 +72,7 @@ We removed some of the unnessary boilerplate so you can focus on the most import
 
 In later tutorials we'll learn about how you can import other assets like CSS and what's actually happening under the hood.
 
-#### Does the DOM element id have to be called root?
+#### Does the DOM element id have to be root?
 
 Nope, the DOM element id can be whatever you want to call it. In this case, you can change it in the `index.html` file. Just make sure you update this `render` otherwise everything will blow up into 1,000 glittery pieces (not really but how cool would that be?).
 
@@ -110,11 +110,7 @@ export default App;
 
 #### So what's going on here?
 
-All React components are either a function or a class (we'll look at this in-depth later). 
-
-We're importing React to the project to tell the transpiler that it needs to translate the JSX syntax into something else. `export default` means our function component is the only thing we're exposing to the world.
-
-Alternatively, if you want to export multiple components you can use `export const App` and then `import { App } from './App';` instead. I tend to find one module per file is a bit easier to manage.
+All React components are either a function or a class (we'll look at this in-depth later). Basically we're exporting a function that returns some HTML. - A super basic almost kernel-like component.
 
 #### Now can we talk about HTML in JS?
 
@@ -191,3 +187,28 @@ Empty JSX is shorthand for `<React.Fragment>...</React.Fragment>` It's useful fo
 
 > As an interesting aside, React function components can return `null` or even strings.
 
+#### Back to our component
+
+Let's get back to working on our Name Displayer 9000 app. We're going to do another change to assign a single name to a value. To do this we're going to change things again a little:
+
+`src/App.js`
+
+```
+const DisplayName = ({ name }) => (
+    <p>Hi {name}! 😎</p>
+);
+
+const App = () => {
+
+    const personsName = 'Casey';
+    
+    return <DisplayName name={personsName} />;
+
+};
+```
+
+In our previous example we hard-coded the persons name. Now we're going to start focusing on being able to change the component with a input field. The first stage of the refactor is to just assign the name to a variable.
+
+## 💾 State Management
+
+Bed time...
