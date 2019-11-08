@@ -138,7 +138,7 @@ const App = ({ name = 'Casey' }) => (
 export default App;
 ```
 
-As you can see in this example, we've now made name a variable and given it a default value. That's not necessary but I think it's good practice. 
+As you can see in this example, we've now made name a variable and assigned it a default value.
 
 When the page refreshes, you should see the component hasn't changed.
 
