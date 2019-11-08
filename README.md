@@ -12,7 +12,7 @@ This assumes you have a vague idea about what exactly React is and you're intrer
 
 ### It's kind of a rubbish intoduction to React
 
-That's fine, I'm not going to be showing this at conferences or anything. I'm just putting the stuff I've shown others in the past and explained it in a way that seemed sensible to _me_ at least 😀. If you have a better way, feel free to fork an contribute.
+That's fine, I'm not going to be showing this at conferences or anything. I'm just putting the stuff I've shown others in the past and explained it in a way that seemed sensible to _me_ at least 😀. If you have a better way, feel free to fork and contribute.
 
 ### But seriously. Why?
 
@@ -22,7 +22,7 @@ I noticed that people tend to get bogged down in details like: _where is the vie
 
 ### Introduction, for real
 
-So React is this cool Javascript library developed by Facebook which is intended to basically provide you with a mechanism to easily add interactivity to your browser UI. It's very unopinionated about how to structure and architecture your project which in some cases can be why it seems to be very difficult to get started.
+So React is this cool Javascript library developed by Facebook which is intended to provide you with a mechanism to easily add interactivity to your browser UI. It's very unopinionated about how to structure and architecture your project which in some cases can be why it seems to be very difficult to get started.
 
 > This is not intdended to be some kind of bible on how to build the world's best application in React. It just surfaces some patterns and thinking that I found worked well in the past (at least when I was learning).
 
@@ -72,9 +72,9 @@ We removed some of the unnessary boilerplate so you can focus on the most import
 
 In later tutorials we'll learn about how you can import other assets like CSS and what's actually happening under the hood.
 
-#### Does the DOM element id have to be root?
+#### Does the DOM element id have to be called root?
 
-Nope, the DOM element can be whatever you want to call it. In this case, you can change it in the `index.html` file. Just make sure you update this file otherwise everything will blow up into 1,000 glittery pieces (ok not really but how cool would that be?).
+Nope, the DOM element id can be whatever you want to call it. In this case, you can change it in the `index.html` file. Just make sure you update this `render` otherwise everything will blow up into 1,000 glittery pieces (not really but how cool would that be?).
 
 #### Why is there HTML in my Javascript?
 
@@ -88,37 +88,106 @@ We import this file in `index.js` and it serves as our entry point for the proje
 
 ```
 
-Your browser should have blown up with an error. If that's correct then great! You're a React developer. Ok, not really next bit we're going to look at making our first component.
+Your browser should have blown up with an error. If that's happening... great! You're a React developer. Ok, not really next bit we're going to look at making our first component.
 
-You'll notice your browser refreshes every time it saves. This happens in the background and maybe in the future we can take a look at super fancy things like _Hot Module Reloading_ which will replace components on the fly without reloading the whole screen.
+You'll notice your browser refreshes every time it saves. This happens in the background and maybe in the future we can take a look at super fancy things like _Hot Module Reloading_ which will replace components on the fly without reloading your whole app.
 
 ## 🍼 My First Component
 
-Ok, so lets start with the basics. We're going to display you're name (or maybe someone elses) in a paragraph. To do this we're going to need to import React and create a javascript function:
+Ok, so lets start with the basics. We're going to display your name (or maybe someone elses) in a paragraph. To do this we're going to need to import React and export a javascript function from this file:
 
 `src/App.js`
 
 ```
 import React from 'react';
 
-export default App = () => (
+const App = () => (
     <p>Hi Casey! 😎</p>
 );
+
+export default App;
 ```
 
-### So what's going on here?
+#### So what's going on here?
 
-All React components are either a function or a class (we'll touch on this later). 
+All React components are either a function or a class (we'll look at this in-depth later). 
 
 We're importing React to the project to tell the transpiler that it needs to translate the JSX syntax into something else. `export default` means our function component is the only thing we're exposing to the world.
 
 Alternatively, if you want to export multiple components you can use `export const App` and then `import { App } from './App';` instead. I tend to find one module per file is a bit easier to manage.
 
-### Now can we talk about HTML in JS?
+#### Now can we talk about HTML in JS?
 
-Yep, so like I explained earlier JSX is basically HTML in Javascript but instead of _real_ HTML it's just a marker to tell the compiler that we need it to translate our code. This might be considered a weird anti-pattern but if you structure your code correctly it does eventually become second-nature. Short version: it's not really JS.
+Yep, so like I explained earlier JSX is basically HTML in Javascript but instead of _real_ HTML it's just a marker to tell the compiler that we need it to translate our code. This might be considered a weird anti-pattern but if you structure your code correctly it does eventually become second-nature. Short version: it's not really HTML.
 
-### Did it work?
+#### Did it work?
 
 Check it out in your browser, if everything worked, the error should be replaced by your greeting. Great job!
+
+## 🥗 Make it a bit more useful
+
+So... we now have a thing right? It's not really a interesting thing... just _something_. The Name Displayer 9000. Let's make it a bit more useful.
+
+As you might have seen our components are a function. The function can take a single argument, an object, known as `props`. React works on a paradigm known as "data down, actions up". A component itself can't do much, it can receive values and _react_ (🥁) to that property change. Props themselves can be more or less any primitive.
+
+In our Name Displayer component, lets set up our first prop. We're going to update our component:
+
+`src/App.js`
+
+```
+const App = ({ name = 'Casey' }) => (
+    <p>Hi {name}! 😎</p>
+);
+
+export default App;
+```
+
+As you can see in this example, we've now made name a variable and given it a default value. That's not necessary but I think it's good practice. 
+
+When the page refreshes, you should see the component hasn't changed.
+
+#### Sigh, what's this {name} stuff?
+
+Inside a React component or HTML element, this is basically a way of displaying a value, in this case `name`. In later tutorials we can look at string interpolation and other tricks.
+
+#### This is great, let's keep going
+
+It's great but it's not useful, let's make some changes. We're going to build a few reusable components now but to do that we're going to reogranise things slightly:
+
+`src/App.js`
+
+```
+const DisplayName = ({ name = 'Casey' }) => (
+    <p>Hi {name}! 😎</p>
+);
+
+const App = () => (
+    <DisplayName name='Kendra' />
+);
+```
+
+What you should see now is we're saying hi to Kendra instead. We have our first component that we can now reuse. In fact, let's quickly do that now:
+
+`src/App.js`
+
+```
+const DisplayName = ({ name = 'Casey' }) => (
+    <p>Hi {name}! 😎</p>
+);
+
+const App = () => (
+    <>
+        <DisplayName />
+        <DisplayName name='Kendra' />
+        <DisplayName name='Stephen' />
+        <DisplayName name='John' />
+    </>
+);
+```
+
+#### What does <>...</> mean?
+
+Empty JSX is shorthand for `<React.Fragment>...</React.Fragment>` It's useful for when you have multiple components but don't want to wrap them in a DOM element like a `div`. This is because a function component can only return one element.
+
+> As an interesting aside, React function components can return `null` or even strings.
 
