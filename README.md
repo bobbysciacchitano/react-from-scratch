@@ -54,8 +54,6 @@ If everything has gone well, you should have a browser open automatically and na
 
 Open the project in your editor and let's take a look at a couple of key files:
 
----
-
 `src/index.js`
 
 This is the main entry point for your application. Because we're starting from scratch, replace the module with the following:
@@ -70,9 +68,9 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 #### I love deleting stuff without knowing what I'm doing...
 
-We removed some of the unnessary boilerplate so you can focus on the most important thing. ReactDOM is basically the bootstrapper for your project. It manages mounting your entry point (in this case `App`) into a specific DOM element (`root`).
+We removed some of the unnessary boilerplate so you can focus on the most important thing: ReactDOM. ReactDOM is basically the bootstrapper for your project. It manages mounting your entry point (in this case, `App`) into a specific DOM element (`root`).
 
-In later tutorials we'll learn about other assets like CSS and what's actually happening under the hood.
+In later tutorials we'll learn about how you can import other assets like CSS and what's actually happening under the hood.
 
 #### Does the DOM element id have to be root?
 
@@ -82,8 +80,6 @@ Nope, the DOM element can be whatever you want to call it. In this case, you can
 
 This is the secret React sauce also known as JSX. We'll have a look at this later but the short version is `<App />` is sweet, sweet syntactic sugar for `React.createElement('div');` just under the hood it's being translated for us.
 
----
-
 `src/App.js`
 
 We import this file in `index.js` and it serves as our entry point for the project. Once again we're starting from scratch so delete the contents of this file. And save it. Your file should look like this now:
@@ -92,8 +88,37 @@ We import this file in `index.js` and it serves as our entry point for the proje
 
 ```
 
-And your browser should have blown up with an error. If that's correct then great! You're a React developer. Ok, not really next bit we're going to look at making our first component.
+Your browser should have blown up with an error. If that's correct then great! You're a React developer. Ok, not really next bit we're going to look at making our first component.
+
+You'll notice your browser refreshes every time it saves. This happens in the background and maybe in the future we can take a look at super fancy things like _Hot Module Reloading_ which will replace components on the fly without reloading the whole screen.
 
 ## 🍼 My First Component
 
-Ok, so lets start with the basics. We're going to display you're name (or maybe someone elses) in a paragraph. 
+Ok, so lets start with the basics. We're going to display you're name (or maybe someone elses) in a paragraph. To do this we're going to need to import React and create a javascript function:
+
+`src/App.js`
+
+```
+import React from 'react';
+
+export default App = () => (
+    <p>Hi Casey! 😎</p>
+);
+```
+
+### So what's going on here?
+
+All React components are either a function or a class (we'll touch on this later). 
+
+We're importing React to the project to tell the transpiler that it needs to translate the JSX syntax into something else. `export default` means our function component is the only thing we're exposing to the world.
+
+Alternatively, if you want to export multiple components you can use `export const App` and then `import { App } from './App';` instead. I tend to find one module per file is a bit easier to manage.
+
+### Now can we talk about HTML in JS?
+
+Yep, so like I explained earlier JSX is basically HTML in Javascript but instead of _real_ HTML it's just a marker to tell the compiler that we need it to translate our code. This might be considered a weird anti-pattern but if you structure your code correctly it does eventually become second-nature. Short version: it's not really JS.
+
+### Did it work?
+
+Check it out in your browser, if everything worked, the error should be replaced by your greeting. Great job!
+
