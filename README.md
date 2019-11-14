@@ -12,7 +12,7 @@ This assumes you have a vague idea about what React is and you're intrerested in
 
 ### It's kind of a rubbish intoduction to React
 
-That's fine, I'm not going to be showing this at conferences or anything. I'm just putting the stuff I've shown others in the past and explained it in a way that seemed sensible to _me_ at least 😀. If you have a better way, feel free to fork and contribute.
+That's fine, I'm not going to be showing this at conferences or anything. I'm just documenting the stuff I've shown others in the past and explained it in a way that seemed sensible to _me_ at least 😀. If you have a better way to explain a concept, feel free to fork and contribute.
 
 ### But seriously. Why?
 
@@ -22,7 +22,7 @@ I noticed that people tend to get bogged down in details like: _where is the vie
 
 ### Introduction, for real
 
-So React is this cool Javascript library developed by Facebook which is intended to provide you with a mechanism to easily add interactivity to your browser UI. It's very unopinionated about how to structure and architecture your project which in some cases can be why it seems to be very difficult to get started.
+So React is this cool Javascript library developed by Facebook to build user interfaces. It's very unopinionated about how to structure and architecture your project which in some cases can be why it seems to be very difficult to get started.
 
 > This is not intended to be some kind of bible on how to build the world's best application in React. It just surfaces some patterns and thinking that I found worked well in the past (at least when I was learning).
 
@@ -36,11 +36,11 @@ Caveat: I'm not going to explain ES5/ES6 modules, or _modern_ javascript develop
 
 ### Create React App
 
-Create React App is a project developed by some really clever people at Facebook and the Open Source community to help bootstrap your project. Just like React itself it's fairly unopinionated about how you should do things and abstracts away a lot of the config and complexity. It suits 90% of use cases so its totally fine for us.
+To make setting up your project easier we're going to be using Create React App (CRA). CRA is a project developed by some really clever people at Facebook and the Open Source community to help bootstrap your project. Just like React itself it's fairly unopinionated about how you should do things and abstracts away a lot of the config and complexity. It suits 90% of use cases so its totally fine for us.
 
 #### Install Create React App
 
-We're going to use `npx` to setup our first project. Inside a shell run the following commands:
+We're going to use `npx` (https://www.npmjs.com/package/npx) to setup our first project. Inside a shell run the following commands:
 
 ```
     $ npx create-react-app my-project
@@ -66,7 +66,7 @@ import App from './App';
 ReactDOM.render(<App />, document.getElementById('root'));
 ```
 
-#### I love deleting stuff without knowing what I'm doing...
+#### I love deleting stuff without explanation...
 
 We removed some of the unnessary boilerplate so you can focus on the most important thing: ReactDOM. ReactDOM is basically the bootstrapper for your project. It manages mounting your entry point (in this case, `App`) into a specific DOM element (`root`).
 
@@ -110,7 +110,7 @@ export default App;
 
 #### So what's going on here?
 
-All React components are either a function or a class (we'll look at this in-depth later). Basically we're exporting a function that returns some HTML. - A super basic almost kernel-like component.
+All React components are either a function or a class (we'll look at classes when we're dealing with state later). Basically we're exporting a function that returns some HTML. - A super basic almost kernel-like component.
 
 #### Now can we talk about HTML in JS?
 
@@ -120,7 +120,7 @@ Yep, so like I explained earlier JSX is basically HTML in Javascript but instead
 
 Check it out in your browser, if everything worked, the error should be replaced by your greeting. Great job!
 
-## 🥗 Make it a bit more useful
+## 🏗 Make it a bit more useful
 
 So... we now have a thing right? It's not really a interesting thing... just _something_. The Name Displayer 9000. Let's make it a bit more useful.
 
