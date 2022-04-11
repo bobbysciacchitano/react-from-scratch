@@ -277,7 +277,7 @@ const DisplayName = ({ name }) => (
     <p>Hi {name} is cool! 😎</p>
 );
 
-const SwitchName = ({ name, onClick }) => (
+const SwitchName = ({ name, setPersonsName }) => (
     <button
         type="button"
         onClick={() => setPersonsName(name)}>{name}
@@ -301,7 +301,11 @@ const App = () => {
 
             <p>
                 {names.map((name) => (
-                    <SwitchName key={name} name={name} onClick={name} />
+                    <SwitchName 
+                        key={name} 
+                        name={name}
+                        setPersonsName={setPersonsName}
+                    />
                 ))}
             </p>
         </>
