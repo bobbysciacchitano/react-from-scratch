@@ -268,7 +268,7 @@ const App = () => {
 
 ```
 
-In this example we've created our first piece of interactivity. The user can click the button and replace the name with someone else. Let's refactor it a little to take more buttons.
+In this example we've created our first piece of interactivity. The user can click the button and replace the name with someone else. Let's refactor it a little to display more buttons.
 
 `src/App.js`
 
@@ -299,9 +299,11 @@ const App = () => {
         <>
             <DisplayName name={personsName} />
 
-            names.map((name) => (
-                <SwitchName key={name} name={name} onClick={name} />
-            ));
+            <p>
+                {names.map((name) => (
+                    <SwitchName key={name} name={name} onClick={name} />
+                ))}
+            </p>
         </>
     );
 };
