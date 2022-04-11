@@ -8,7 +8,7 @@ So you've decided to learn React and came across this. This project is just a qu
 
 ### Who is this for?
 
-This assumes you have a vague idea about what React is and you're intrerested in learning how to use the library without trying to find and gather resources or you want the quick version on how to get going.
+This guide assumes you have a vague idea about what React is and you're intrerested in learning how to use the library without trying to find and gather resources or you want the quick version on how to get going.
 
 ### It's kind of a rubbish intoduction to React
 
@@ -16,9 +16,9 @@ That's fine, I'm not going to be showing this at conferences or anything. I'm ju
 
 ### But seriously. Why?
 
-I noticed that people tend to get bogged down in details like: _where is the view_ or _how does data get loaded_ or just _this is way too complex_ or _wtf is a JSX_. This intended to be a gentle introduction that I'll build up over time.
+I noticed that people tend to get bogged down in details like: _where is the view_ or _how does data get loaded_ or just _this is way too complex_ or _wtf is JSX_. This intended to be a gentle introduction that I'll build up over time.
 
-## 🎉 OK, Let's Get Started 
+## 🎉 OK, Let's Get Started
 
 ### Introduction, for real
 
@@ -28,15 +28,15 @@ So React is this cool Javascript library developed by Facebook to build user int
 
 ### You will need
 
-* A computer,
-* a text editor, I recommend Visual Studio Code,
-* NodeJS,
+- A computer,
+- a text editor, I recommend Visual Studio Code,
+- NodeJS,
 
 Caveat: I'm not going to explain ES5/ES6 modules, or _modern_ javascript development here. If you think I should while working through this, let me know.
 
 ### Create React App
 
-To make setting up your project easier we're going to be using Create React App (CRA). CRA is a project developed by some really clever people at Facebook and the Open Source community to help bootstrap your project. Just like React itself it's fairly unopinionated about how you should do things and abstracts away a lot of the config and complexity. It suits 90% of use cases so its totally fine for us.
+To make setting up your project easier we're going to be using Create React App (CRA). CRA is a project developed by some really clever people at Facebook and the Open Source community to help bootstrap your project. It's slightly opinionated about how you should do things and abstracts away a lot of the config and complexity. It suits 98% of use cases so its totally fine for us.
 
 #### Install Create React App
 
@@ -70,7 +70,7 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 We removed some of the unnessary boilerplate so you can focus on the most important thing: ReactDOM. ReactDOM is basically the bootstrapper for your project. It manages mounting your entry point (in this case, `App`) into a specific DOM element (`root`).
 
-In later tutorials we'll learn about how you can import other assets like CSS and what's actually happening under the hood.
+In later tutorials we'll learn about how you can import other assets like CSS.
 
 #### Does the DOM element id have to be root?
 
@@ -78,7 +78,7 @@ Nope, the DOM element id can be whatever you want to call it. In this case, you 
 
 #### Why is there HTML in my Javascript?
 
-This is the secret React sauce also known as JSX. We'll have a look at this later but the short version is `<App />` is sweet, sweet syntactic sugar for `React.createElement('div');` just under the hood it's being translated for us.
+This is the secret React sauce also known as JSX. It's kinda like Javascript and XML and HTML had a baby and this is it. We'll have a look at this later but the short version is `<App />` is sweet, sweet syntactic sugar for `React.createElement('div');`.
 
 `src/App.js`
 
@@ -201,7 +201,7 @@ const DisplayName = ({ name }) => (
 const App = () => {
 
     const personsName = 'Casey';
-    
+
     return <DisplayName name={personsName} />;
 
 };
@@ -211,4 +211,99 @@ In our previous example we hard-coded the persons name. Now we're going to start
 
 ## 💾 State Management
 
-Bed time...
+In React everything is immutable (means we can't change it) unless we explicitly tell React to update the state. In this section, I'm going to introduce you to how to manage state in your user interface. And how to tell react to do change things.
+
+React has a concept known as _hooks_. Hooks enable us to maniupulate the state or React to a user's action. In our name displayer 9000 example, we're going to use a hook to hold onto the state of our user's name.
+
+`src/App.js`
+
+```
+const DisplayName = ({ name }) => (
+    <p>Hi {name}! 😎</p>
+);
+
+const App = () => {
+
+    const [personsName] = useState('Casey');
+
+    return <DisplayName name={personsName} />;
+
+};
+
+```
+
+In this example, we've replaced the constant with function assigned to a array. useState always returns an array with two elements:
+
+`[state, setState] = useState(initialState);`
+
+With this simple hook we can now control the state of our UI.
+
+In this next example, Let's say we want to replace the name with someone else's by clicking a button. In order to do that, we need to tell the useState hook to set the new state. We can do this by adding a button and attach some code to the `onClick` event of the button.
+
+`src/App.js`
+
+```
+const DisplayName = ({ name }) => (
+    <p>Hi {name} is cool! 😎</p>
+);
+
+const App = () => {
+
+    const [personsName, setPersonsName] = useState('Casey');
+
+    return (
+        <>
+            <DisplayName name={personsName} />
+
+            <p>
+                <button
+                    type="button"
+                    onClick={() => setPersonsName('Steve')}>
+                        Someone Else
+                </button>
+            </p>
+        </>
+    );
+};
+
+```
+
+In this example we've created our first piece of interactivity. The user can click the button and replace the name with someone else. Let's refactor it a little to take more buttons.
+
+`src/App.js`
+
+```
+const DisplayName = ({ name }) => (
+    <p>Hi {name} is cool! 😎</p>
+);
+
+const SwitchName = ({ name, onClick }) => (
+    <button
+        type="button"
+        onClick={() => setPersonsName(name)}>{name}
+    </button>
+);
+
+const names = [
+    'Steve',
+    'Joey',
+    'Andrea',
+    'Helen',
+];
+
+const App = () => {
+
+    const [personsName, setPersonsName] = useState('Casey');
+
+    return (
+        <>
+            <DisplayName name={personsName} />
+
+            names.map((name) => (
+                <SwitchName key={name} name={name} onClick={name} />
+            ));
+        </>
+    );
+};
+
+```
